@@ -58,6 +58,8 @@ class Flamelet(pygame.sprite.Sprite):
         self.radius = radius
         self.velocity = 2
         
+        ## set self.pos/0.5 for cloud of the flame / gas
+        ## or set self.pos/2 for flame type of the look
         angle_range = math.pi/0.5
         self.angle = random.random()*angle_range - math.pi/2 - angle_range/2
         
