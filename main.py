@@ -25,7 +25,8 @@ class Game():
                 self.running = False
     
     def update(self) -> None:
-        pass
+        self.flame.update()
+        self.flame.pos = list(pygame.mouse.get_pos())
     
     def draw(self) -> None:
         self.window.fill(0)

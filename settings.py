@@ -1,5 +1,5 @@
 RESOLUTION = (1280, 800)
-FPS = 2
+FPS = 60
 
 ### Colors
 RED = (250, 30, 30)
