@@ -1,0 +1,7 @@
+RESOLUTION = (1280, 800)
+FPS = 2
+
+### Colors
+RED = (250, 30, 30)
+ORANGE = (250, 190, 30)
+YELLOW = (250, 250, 30)
