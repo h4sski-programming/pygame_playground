@@ -5,6 +5,9 @@ from settings import *
 from flame import Flame
 from tile import Tile, TileMap
 from background import BackgroundLayer
+from player import Player
+
+from draw_sprite import draw_sprite
 
 
 class Game():
@@ -18,6 +21,7 @@ class Game():
         self.background_layer = BackgroundLayer()
         self.tile_map = TileMap()
         self.flame = Flame()
+        self.player = Player([100, 120])
         
         ## Run the game after setting up all stuff
         self.run()
@@ -33,6 +37,8 @@ class Game():
         self.background_layer.update(pygame.mouse.get_pos()[0])
         self.tile_map.update()
         
+        self.player.update()
+        
         self.flame.update()
         self.flame.pos = list(pygame.mouse.get_pos())
     
@@ -42,7 +48,11 @@ class Game():
         ### draw tile_map
         self.tile_map.draw(self.window)
         self.background_layer.draw(self.window)
+        
+        draw_sprite(self.player, self.window)
+        
         self.flame.draw(self.window)
+        
         
         pygame.display.flip()
     
