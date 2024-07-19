@@ -4,6 +4,7 @@ import pygame
 from settings import *
 from flame import Flame
 from tile import Tile, TileMap
+from background import BackgroundLayer
 
 
 class Game():
@@ -14,6 +15,7 @@ class Game():
         
         self.main_surface = pygame.Surface(RESOLUTION)
         
+        self.background_layer = BackgroundLayer()
         self.tile_map = TileMap()
         self.flame = Flame()
         
@@ -28,6 +30,7 @@ class Game():
     
     def update(self) -> None:
         
+        self.background_layer.update(pygame.mouse.get_pos()[0])
         self.tile_map.update()
         
         self.flame.update()
@@ -38,7 +41,7 @@ class Game():
         
         ### draw tile_map
         self.tile_map.draw(self.window)
-        
+        self.background_layer.draw(self.window)
         self.flame.draw(self.window)
         
         pygame.display.flip()
