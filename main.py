@@ -3,6 +3,7 @@ import pygame
 
 from settings import *
 from flame import Flame
+from tile import Tile, TileMap
 
 
 class Game():
@@ -13,6 +14,7 @@ class Game():
         
         self.main_surface = pygame.Surface(RESOLUTION)
         
+        self.tile_map = TileMap()
         self.flame = Flame()
         
         ## Run the game after setting up all stuff
@@ -25,11 +27,17 @@ class Game():
                 self.running = False
     
     def update(self) -> None:
+        
+        self.tile_map.update()
+        
         self.flame.update()
         self.flame.pos = list(pygame.mouse.get_pos())
     
     def draw(self) -> None:
         self.window.fill(0)
+        
+        ### draw tile_map
+        self.tile_map.draw(self.window)
         
         self.flame.draw(self.window)
         

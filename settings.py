@@ -1,6 +1,8 @@
 RESOLUTION = (1280, 800)
 FPS = 60
 
+TILE_SIZE = (32, 32)
+
 ### Colors
 RED = (250, 30, 30)
 ORANGE = (250, 190, 30)

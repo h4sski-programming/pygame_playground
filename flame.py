@@ -11,11 +11,12 @@ class Flame(pygame.sprite.Sprite):
         self.pos = [500, 400]
         self.radius = 30
         self.flamelets = []
-        self.max_flamelets = 10
+        self.max_flamelets = 100
         
     def update(self) -> None:
         # if len(self.flamelets) < self.max_flamelets and random.random()>0.9:
-        if random.random()>0.5:
+        # if random.random()>0.1:
+        if len(self.flamelets) < self.max_flamelets:
             self.flamelets.append(Flamelet(self.pos[:], self.radius))
         
         for flamelet in self.flamelets[:]:
@@ -25,10 +26,10 @@ class Flame(pygame.sprite.Sprite):
         
     
     def draw(self, surface:pygame.Surface) -> None:
-        colors = [[RED, 1], [ORANGE, 0.8], [YELLOW, 0.5]]
+        colors = [[RED, 1], [ORANGE, 0.85], [YELLOW, 0.6], ['white', 0.2]]
         
         for color in colors:
-            # pygame.draw.circle(surface, color[0], self.pos, self.radius * color[1])
+            pygame.draw.circle(surface, color[0], self.pos, self.radius * color[1])
             for flamelet in self.flamelets:
                 pygame.draw.circle(surface, color[0], flamelet.pos, flamelet.radius * color[1])
         
@@ -60,7 +61,7 @@ class Flamelet(pygame.sprite.Sprite):
         
         ## set self.pos/0.5 for cloud of the flame / gas
         ## or set self.pos/2 for flame type of the look
-        angle_range = math.pi/0.5
+        angle_range = math.pi/1.7
         self.angle = random.random()*angle_range - math.pi/2 - angle_range/2
         
     def update(self) -> None:
